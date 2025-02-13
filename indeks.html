@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator Daur Ulang Plastik</title>
+    <style>
+        body {
+            background: linear-gradient(to top, #ff6347, #ff4500, #ff8c00); /* Merah, Oranye, Kuning */
+            background-size: cover;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.85);
+            border-radius: 15px;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3);
+            padding: 30px;
+            width: 450px;
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            color: #ff4500;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin: 12px 0;
+            border: 2px solid #ff6347;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        button {
+            background-color: #ff6347;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #e55347;
+        }
+
+        .result {
+            margin-top: 20px;
+            display: none;
+        }
+
+        .result p {
+            margin: 8px 0;
+        }
+
+        .info {
+            display: none;
+            margin-top: 20px;
+        }
+
+        .info p {
+            font-size: 1.2rem;
+            color: #ff6347;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Kalkulator Daur Ulang Plastik</h2>
+        <label for="plastik">Masukkan jumlah sampah plastik (kg):</label>
+        <input type="number" id="plastik" placeholder="Masukkan jumlah plastik (kg)">
+        <button onclick="hitung()">Hitung Jumlah Produk</button>
+
+        <div class="result" id="result">
+            <p>Jumlah Botol Plastik: <span id="jumlah-produk"></span></p>
+            <button onclick="tampilkanPenjualan()">Lihat Uang Hasil Penjualan</button>
+            <button onclick="tampilkanKeuntungan()">Lihat Keuntungan</button>
+        </div>
+
+        <div class="info" id="uang-penjualan">
+            <p>Uang Hasil Penjualan: Rp <span id="hasil-penjualan"></span></p>
+        </div>
+        <div class="info" id="untung">
+            <p>Total Keuntungan: Rp <span id="total-untung"></span></p>
+        </div>
+    </div>
+
+    <script>
+        function hitung() {
+            var jumlahPlastik = document.getElementById("plastik").value;
+            var jumlahBotol = jumlahPlastik * 10;
+            document.getElementById("jumlah-produk").innerHTML = jumlahBotol;
+            document.getElementById("result").style.display = "block";
+            document.getElementById("uang-penjualan").style.display = "none"; // Sembunyikan uang penjualan
+            document.getElementById("untung").style.display = "none"; // Sembunyikan untung
+        }
+
+        function tampilkanPenjualan() {
+            var jumlahPlastik = document.getElementById("plastik").value;
+            var hasilPenjualan = jumlahPlastik * 100000;
+            document.getElementById("hasil-penjualan").innerHTML = hasilPenjualan;
+            document.getElementById("uang-penjualan").style.display = "block";
+            document.getElementById("untung").style.display = "none"; // Sembunyikan untung
+        }
+
+        function tampilkanKeuntungan() {
+            var jumlahPlastik = document.getElementById("plastik").value;
+            var totalUntung = jumlahPlastik * 80000;
+            document.getElementById("total-untung").innerHTML = totalUntung;
+            document.getElementById("untung").style.display = "block";
+            document.getElementById("uang-penjualan").style.display = "none"; // Sembunyikan uang penjualan
+        }
+    </script>
+</body>
+</html>
